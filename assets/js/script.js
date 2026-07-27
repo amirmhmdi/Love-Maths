@@ -1,17 +1,37 @@
-function runGame(){}
 
-function checkAnswer(){}
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.getElementsByTagName("button");
 
-function calculateCorrectAnswer(){}
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            if (this.getAttribute("data-type") === "submit") {
+                checkAnswer();
+            } else {
+                let gameType = this.getAttribute("data-type");
+                runGame(gameType);
+            }
+        })
+    }
+});
 
-function incrementScore(){}
+function runGame() {
+    // create two random numbers between 1 and 25
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
+}
 
-function incrementWrongAnswer(){}
+function checkAnswer() { }
 
-function displayAdditionQuestion(){}
+function calculateCorrectAnswer() { }
 
-function displaySubtractQuestion(){}
+function incrementScore() { }
 
-function displayMultiplyQuestion(){}
+function incrementWrongAnswer() { }
 
-function displayDivideQuestion(){}
+function displayAdditionQuestion() { }
+
+function displaySubtractQuestion() { }
+
+function displayMultiplyQuestion() { }
+
+function displayDivideQuestion() { }
