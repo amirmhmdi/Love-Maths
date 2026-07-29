@@ -88,7 +88,7 @@ function calculateCorrectAnswer() {
         case "x":
             return [operand1 * operand2, "multiply"];
         case "/":
-            return [operand1 / operand2, "division"];
+            return [Math.trunc(operand1 / operand2), "division"];
         default:
             alert(`Unimplemented operator ${operator}`);
             return [NaN, operator];
@@ -130,7 +130,7 @@ function displayMultiplyQuestion(operand1, operand2) {
 }
 
 function displayDivideQuestion(operand1, operand2) {
-    document.getElementById("operand1").textContent = operand1;
-    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
     document.getElementById("operator").textContent = "/";
 }
