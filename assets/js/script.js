@@ -40,9 +40,50 @@ function runGame(gameType) {
     }
 }
 
-function checkAnswer() { }
+/**
+ * Checks the answer against the first element in the returned calculateCorrectAnswer array
+ */
+function checkAnswer() { 
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculatedAnswer[0];
 
-function calculateCorrectAnswer() { }
+    if (isCorrect) {
+        alert("Hey! You got it right! :D");
+        incrementScore();
+    } else {
+        alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
+    }
+
+    runGame(calculatedAnswer[1]);
+}
+
+
+/**
+ * Calculates the correct answer to the question
+ * get the operands (the numbers) and the operator (plus, minus, etc)
+ * and returns the correct answer.
+ */
+function calculateCorrectAnswer() { 
+    let operand1 = parseInt(document.getElementById("operand1").innerText);
+    let operand2 = parseInt(document.getElementById("operand2").innerText);
+    let operator = document.getElementById("operator").innerText;
+
+    switch (operator) {
+        case "+":
+            return [operand1 + operand2, "addition"];
+        case "-":
+            return [operand1 - operand2, "subtract"];
+        case "x":
+            return [operand1 * operand2, "multiply"];
+        case "/":
+            return [operand1 / operand2, "division"];
+        default:
+            alert(`Unimplemented operator ${operator}`);
+            return [NaN, operator];
+    }
+}
 
 function incrementScore() { }
 
